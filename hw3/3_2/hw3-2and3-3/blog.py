@@ -158,7 +158,7 @@ def post_newpost():
     formatted_post = newline.sub("<p>", escaped_post)
 
     permalink = posts.insert_entry(title, formatted_post, tags_array, username)
-
+    #print permalink
     # now bottle.redirect to the blog permalink
     bottle.redirect("/post/" + permalink)
 
@@ -326,7 +326,8 @@ posts = blogPostDAO.BlogPostDAO(database)
 users = userDAO.UserDAO(database)
 sessions = sessionDAO.SessionDAO(database)
 
-
+#from bottle import run
+#run(reloader=True)
 bottle.debug(True)
 bottle.run(host='localhost', port=8082)         # Start the webserver running and wait for requests
 
